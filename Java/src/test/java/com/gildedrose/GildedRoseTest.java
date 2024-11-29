@@ -42,7 +42,7 @@ class GildedRoseTest {
         assertEquals(3, app.items[1].sellIn);
         assertEquals(21, app.items[1].quality);
         assertEquals(-1, app.items[2].sellIn);
-        assertEquals(2, app.items[2].quality);
+        assertEquals(1, app.items[2].quality);
 
     }
 

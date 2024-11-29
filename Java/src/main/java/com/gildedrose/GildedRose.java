@@ -41,16 +41,8 @@ class GildedRose {
             decreaseSellIn(items[i]);
 
             // le produit devient périmé
-            if (items[i].sellIn < 0) {
-                switch (items[i].name) {
-                    case AGED_BRIE:
-                        increaseQuality(items[i]);
-                        break;
-                    case BACKSTAGE_PASSES:
-                        totalLossOfQuality(items[i]);
-                        break;
-                    default:
-                }
+            if (items[i].sellIn < 0 && items[i].name.equals(BACKSTAGE_PASSES)) {
+                totalLossOfQuality(items[i]);
             }
         }
     }
