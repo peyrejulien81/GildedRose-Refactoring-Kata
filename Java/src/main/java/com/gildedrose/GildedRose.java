@@ -21,29 +21,21 @@ class GildedRose {
 
             if (!items[i].name.equals("Aged Brie")
                     && !items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                //if (items[i].quality > 0) {
                     if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                         decreaseQuality(items[i]);
                     }
-                //}
             } else {
-                if (items[i].quality < 50) {
-                    items[i].quality = items[i].quality + 1;
+                increaseQuality(items[i]);
 
                     if (items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (items[i].sellIn < 11) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                            increaseQuality(items[i]);
                         }
 
                         if (items[i].sellIn < 6) {
-                            if (items[i].quality < 50) {
-                                items[i].quality = items[i].quality + 1;
-                            }
+                            increaseQuality(items[i]);
                         }
                     }
-                }
             }
 
             decreaseSellIn(items[i]);
@@ -51,21 +43,21 @@ class GildedRose {
             if (items[i].sellIn < 0) {
                 if (!items[i].name.equals("Aged Brie")) {
                     if (!items[i].name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        //if (items[i].quality > 0) {
                             if (!items[i].name.equals("Sulfuras, Hand of Ragnaros")) {
                                 decreaseQuality(items[i]);
                             }
-                        //}
                     } else {
-                        items[i].quality = items[i].quality - items[i].quality;
+                        totalLossOfQuality(items[i]);
                     }
                 } else {
-                    if (items[i].quality < 50) {
-                        items[i].quality = items[i].quality + 1;
-                    }
+                    increaseQuality(items[i]);
                 }
             }
         }
+    }
+
+    public static void totalLossOfQuality(Item item) {
+        item.quality = 0;
     }
 
     public static void decreaseSellIn(Item item) {
@@ -77,6 +69,12 @@ class GildedRose {
     public static void decreaseQuality(Item item) {
         if (item.quality > 0) {
             item.quality--;
+        }
+    }
+
+    public static void increaseQuality(Item item) {
+        if (item.quality < 50) {
+            item.quality++;
         }
     }
 }
